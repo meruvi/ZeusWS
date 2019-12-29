@@ -14,7 +14,7 @@ public class DAO {
         else {
             con = dsc.getConnection();
         }
-        System.out.println("______open:" + con.isClosed());
+        System.out.println("connection______:" + con);
         return con;
     }
   

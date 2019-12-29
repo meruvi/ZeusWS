@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.sql.DataSource;
@@ -22,14 +21,15 @@ public class EmployeeSessionBean {
     private DataSource dsc;
     private Connection con;
     
+    @SuppressWarnings({"CallToPrintStackTrace", "ConvertToTryWithResources"})
     public String listadoEmployees(){
-        List<Employee> lista = new ArrayList();
+        ArrayList<Employee> lista = new ArrayList();
         Gson gson = new Gson();
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try
         {
-            //String sqlEmployee = "SELECT EmployeeID, LastName, FirstName, Title, TitleOfCourtesy, BirthDate, HireDate, Address, City, Region, PostalCode, Country, HomePhone, Extension, Photo, Notes, ReportsTo, PhotoPath FROM Employees";
-            String sqlEmployee = "SELECT EmployeeID, LastName, FirstName, Title, TitleOfCourtesy, BirthDate, HireDate, Address, City, Region, PostalCode, Country, HomePhone, Extension, Photo, Notes, ReportsTo, PhotoPath FROM Employees where EmployeeID = 0";
+            String sqlEmployee = "SELECT EmployeeID, LastName, FirstName, Title, TitleOfCourtesy, BirthDate, HireDate, Address, City, Region, PostalCode, Country, HomePhone, Extension, Photo, Notes, ReportsTo, PhotoPath FROM Employees";
+            //String sqlEmployee = "SELECT EmployeeID, LastName, FirstName, Title, TitleOfCourtesy, BirthDate, HireDate, Address, City, Region, PostalCode, Country, HomePhone, Extension, Photo, Notes, ReportsTo, PhotoPath FROM Employees where EmployeeID = 0";
 
             System.out.println(sqlEmployee);
             this.con = DAO.open(this.con, this.dsc);
